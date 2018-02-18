@@ -20,6 +20,19 @@ You can use filters like
 * `32100.known == false` to check messages still not known
 * `32100.type == 0x20` to only show specific type of messages
 
+Since the communication between devices and apps (and relay servers) goes through other ports than 32100, the packet dissection is not handled automatically.
+
+However, you can force Wireshark to dissect them by manually selecting the protocol.
+
+1. Right-click on a packet and select `Decode as...`
+![Decode as menu](https://github.com/fbertone/32100-dissector/raw/master/images/decode_as1.jpg "Right-click and select Decode as...")
+
+2. In `current` drop-down menu pick `32100`
+![Current dropdown menu](https://github.com/fbertone/32100-dissector/raw/master/images/decode_as2.jpg "In current menu choose 32100")
+
+3. All packets exchanged through the same port are now interpreted as 32100 protocol. Repeat with all missing packets on different ports.
+![Packets interpreted as 32100](https://github.com/fbertone/32100-dissector/raw/master/images/decode_as3.jpg "Packets are now interpreted as 32100 protocol")
+
 ## Contributing
 Contributes of any kind are welcome.
 
