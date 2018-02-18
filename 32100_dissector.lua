@@ -1,17 +1,33 @@
 -- Wireshark dissector for IoT protocol running on UDP port 32100
 -- Author: Fabrizio Bertone <fab.bertone@gmail.com>
--- Version: 0.0.1 (2018-02-17_1)
+-- Version: 0.0.2 (2018-02-18_1)
 -- https://github.com/fbertone/32100-dissector
 
 -- known message types
 messages = {
   [0xf100] = "STUN request",
   [0xf101] = "STUN response",
+  [0xf103] = "TURN NACK ???",
   [0xf120] = "UID Lookup Request 1",
   [0xf121] = "UID Lookup ACK",
+  [0xf130] = "Hello World ???",
   [0xf140] = "UID Lookup Response 1",
+  [0xf141] = "UID Session Open Request",
+  [0xf142] = "UID Session Open Response",
   [0xf167] = "UID Lookup Request 2",
-  [0xf169] = "UID Lookup Response 2 (TURN servers)",
+  [0xf169] = "UID Lookup Response 2 (TURN servers list)",
+  [0xf170] = "TURN server init (C->S)",
+  [0xf171] = "TURN server OK (S->C)",
+  [0xf172] = "TURN server OK2 (C->S)",
+  [0xf173] = "TURN server password ???",
+  [0xf180] = "TURN server UID lookup request ???",
+  [0xf182] = "TURN server redirect ???",
+  [0xf183] = "TURN server UID lookup request 2 ???",
+  [0xf1d0] = "Data",
+  [0xf1d1] = "Data ACK",
+  [0xf1e0] = "PING",
+  [0xf1e1] = "PONG",
+  [0xf1f0] = "Session END",
 }
 
 -- declare our protocol
