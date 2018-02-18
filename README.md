@@ -13,6 +13,8 @@ wireshark -X lua_script:32100_dissector.lua
 ## Usage
 The dissector should automatically handle packets sent to or from UDP port 32100
 
+![dissected packet](https://github.com/fbertone/32100-dissector/raw/master/images/snap1.jpeg "Example of dissected packet")
+
 You can use filters like
 * `32100` to display only protocol's packet or
 * `32100.known == false` to check messages still not known
