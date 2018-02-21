@@ -1,6 +1,6 @@
 -- Wireshark dissector for IoT protocol running on UDP port 32100
 -- Author: Fabrizio Bertone <fab.bertone@gmail.com>
--- Version: 0.0.2 (2018-02-18_1)
+-- Version: 0.0.3 (2018-02-21_1)
 -- https://github.com/fbertone/32100-dissector
 
 -- known message types
@@ -34,6 +34,15 @@ messages = {
   [0xf1e1] = "PONG",
   [0xf1f0] = "Session END",
 }
+
+function parseAddress (buf)
+  local type = buf(1,1):uint()
+  local port1 = buf(2,1):uint()
+  local port2 = buf(3,1):uint()
+  local port = port2 * 0xFF + port1
+  local ip = buf(6,1):uint() .. '.' .. buf(6,1):uint() .. '.' .. buf(4,1):uint() .. '.' .. buf(3,1):uint()
+  return ip .. ':' .. port
+end
 
 -- declare our protocol
 IoT32100_proto = Proto("32100","32100 IoT Protocol")
